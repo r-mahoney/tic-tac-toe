@@ -9,6 +9,7 @@ import { GameService } from 'src/app/services/game-service.service';
 export class GameBoardComponent implements OnInit {
   board: string[] = [];
   @Input() gameState: boolean = true;
+  @Input() round: number = 0;
   @Output() resetGame: EventEmitter<any> = new EventEmitter();
 
   constructor(private gameService: GameService) {}
@@ -27,6 +28,5 @@ export class GameBoardComponent implements OnInit {
 
   setGameDifficulty(value: string) {
     this.gameService.setGameDifficulty(value);
-    console.log(this.gameService.difficulty);
   }
 }

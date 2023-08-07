@@ -32,7 +32,6 @@ export class GameService {
 
   setGameDifficulty(value: string) {
     this.difficulty = value;
-    console.log(this.difficulty);
   }
 
   changePlayer() {

@@ -12,14 +12,14 @@
   </select> -->
 
 
-    <select #difficulty (change)="setGameDifficulty(difficulty.value)" class="difficulty">
+    <select #difficulty (change)="setGameDifficulty(difficulty.value)" class="difficulty" *ngIf="round === 0 || !gameState">
       <option default selected disabled>Dificulty</option>
       <option>Winnable</option>
       <option>Unbeatable</option>
     </select>
 
 
-    <button class="resetButton" (click)="onResetGame()">
+    <button class="resetButton" (click)="onResetGame()" *ngIf="!gameState">
       Reset Game
     </button>
 
