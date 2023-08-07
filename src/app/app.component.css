@@ -5,10 +5,10 @@
   align-items: center;
 }
 
-body {
-    background-color: blue;
-}
-
 .red {
     color: red;
+}
+
+.gray {
+  color: gray;
 }

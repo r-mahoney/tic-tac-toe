@@ -19,10 +19,6 @@ export class GameService {
     return this.tiles;
   }
 
-  getRound() {
-    return this.round;
-  }
-
   resetGame() {
     for (let i = 0; i < this.gameBoard.length; i++) {
       this.gameBoard[i] = i;
@@ -63,8 +59,7 @@ export class GameService {
   setValue(index: number) {
     if (this.gameState) {
       if (this.gameBoard[index] !== 'X' && this.gameBoard[index] !== 'O') {
-        this.gameBoard[index] = this.activePlayer;
-        this.tiles[index] = this.activePlayer;
+        this.gameBoard[index] = this.tiles[index] = this.activePlayer;
         this.round++;
         this.changePlayer();
       }
@@ -93,7 +88,7 @@ export class GameService {
     }
     let moves: any = [];
 
-    for (var i = 0; i < availableIndices.length; i++) {
+    for (let i = 0; i < availableIndices.length; i++) {
       let move: any = {};
       move.index = this.gameBoard[availableIndices[i]];
       board[availableIndices[i]] = player;
@@ -102,7 +97,7 @@ export class GameService {
         const g = this.botTurn(board, this.Player);
         move.score = g!.score;
       } else {
-        var g = this.botTurn(board, this.Bot);
+        const g = this.botTurn(board, this.Bot);
         move.score = g!.score;
       }
       this.gameBoard[availableIndices[i]] = move.index;

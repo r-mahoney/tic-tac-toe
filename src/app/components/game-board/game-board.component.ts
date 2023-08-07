@@ -13,7 +13,6 @@ import { GameService } from 'src/app/services/game-service.service';
 })
 export class GameBoardComponent implements OnInit {
   board: string[] = [];
-  round: number = 0;
   @Output() resetGame: EventEmitter<any> = new EventEmitter();
 
   constructor(private gameService: GameService) {}
