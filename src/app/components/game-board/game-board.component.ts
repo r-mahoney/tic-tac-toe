@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  Input,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { GameService } from 'src/app/services/game-service.service';
 
 @Component({
@@ -29,5 +23,10 @@ export class GameBoardComponent implements OnInit {
 
   onResetGame() {
     this.gameService.resetGame();
+  }
+
+  setGameDifficulty(value: string) {
+    this.gameService.setGameDifficulty(value);
+    console.log(this.gameService.difficulty);
   }
 }

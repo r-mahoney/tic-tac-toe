@@ -5,10 +5,22 @@
     [index]="i"
     (onClickSquare)="setSquare(i)"
   ></app-square>
-  <button
-  *ngIf="!gameState"
-  (click)="onResetGame()"
-  >Reset Game</button>
+  <!-- <select name="difficulty" id="difficulty" class="difficulty" (change)="myFunc(difficulty.value)">
+    <option value="0" default>Difficulty</option>
+    <option value="easy" >Winnable</option>
+    <option value="hard">Unbeatable</option>
+  </select> -->
+
+
+    <select #difficulty (change)="setGameDifficulty(difficulty.value)" class="difficulty">
+      <option default selected disabled>Dificulty</option>
+      <option>Winnable</option>
+      <option>Unbeatable</option>
+    </select>
+
+
+    <button class="resetButton" (click)="onResetGame()">
+      Reset Game
+    </button>
+
 </div>
-
-

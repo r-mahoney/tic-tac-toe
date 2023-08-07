@@ -12,6 +12,7 @@ export class GameService {
   round: number = 0;
   gameState: boolean = true;
   winner: string = '';
+  difficulty: string = 'Winnable';
 
   constructor() {}
 
@@ -29,10 +30,20 @@ export class GameService {
     this.gameState = true;
   }
 
+  setGameDifficulty(value: string) {
+    this.difficulty = value;
+    console.log(this.difficulty);
+  }
+
   changePlayer() {
+    let index;
     if (this.activePlayer === this.Player) {
       this.activePlayer = this.Bot;
-      let index = this.botTurn(this.gameBoard, this.Bot).index;
+      if (this.difficulty === 'Winnable') {
+        index = this.easyBotTurn(this.gameBoard);
+      } else {
+        index = this.botTurn(this.gameBoard, this.Bot).index;
+      }
       this.setValue(index);
     } else {
       this.activePlayer = this.Player;
@@ -123,6 +134,13 @@ export class GameService {
       }
     }
     return moves[bestMove!];
+  }
+
+  easyBotTurn(board: any) {
+    const availableIndices = board.filter((s: any) => s !== 'X' && s !== 'O');
+    const index = Math.floor(Math.random() * availableIndices.length);
+    const move = availableIndices[index];
+    return move;
   }
 
   winning(board: string[], player: string) {
