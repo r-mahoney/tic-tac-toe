@@ -1,8 +1,7 @@
-<div>
+<div class="container">
   <h1 *ngIf="gameService.gameState">Play A Move</h1>
-  <h1 *ngIf="!gameService.gameState">Game Has Ended</h1>
-  <h3 *ngIf="!gameService.gameState && gameService.winner">
+  <h1 *ngIf="!gameService.gameState && gameService.winner" [ngClass]="gameService.winner === 'Bot Wins' ? 'red' : 'green'">
     {{ gameService.winner }}
-  </h3>
+  </h1>
   <app-game-board></app-game-board>
 </div>
