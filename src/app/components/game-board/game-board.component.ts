@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   Output,
+  Input,
   EventEmitter,
 } from '@angular/core';
 import { GameService } from 'src/app/services/game-service.service';
@@ -13,6 +14,7 @@ import { GameService } from 'src/app/services/game-service.service';
 })
 export class GameBoardComponent implements OnInit {
   board: string[] = [];
+  @Input() gameState: boolean = true;
   @Output() resetGame: EventEmitter<any> = new EventEmitter();
 
   constructor(private gameService: GameService) {}

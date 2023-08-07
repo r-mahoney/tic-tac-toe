@@ -3,5 +3,5 @@
   <h1 *ngIf="!gameService.gameState && gameService.winner" [ngClass]="gameService.winner === 'Bot Wins' ? 'red' : 'gray'">
     {{ gameService.winner }}
   </h1>
-  <app-game-board></app-game-board>
+  <app-game-board [gameState]="gameService.gameState"></app-game-board>
 </div>

@@ -6,6 +6,7 @@
     (onClickSquare)="setSquare(i)"
   ></app-square>
   <button
+  *ngIf="!gameState"
   (click)="onResetGame()"
   >Reset Game</button>
 </div>
