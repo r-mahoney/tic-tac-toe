@@ -1,0 +1,13 @@
+<div class="grid-container">
+  <app-square
+    *ngFor="let square of board; let i = index"
+    [square]="square"
+    [index]="i"
+    (onClickSquare)="setSquare(i)"
+  ></app-square>
+  <button
+  (click)="onResetGame()"
+  >Reset Game</button>
+</div>
+
+

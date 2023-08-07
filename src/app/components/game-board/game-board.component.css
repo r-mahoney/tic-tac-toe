@@ -1,0 +1,12 @@
+.grid-container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+}
+
+button {
+  grid-row: 4;
+  grid-column: 2;
+  width: 50%;
+}
