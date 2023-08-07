@@ -5,17 +5,11 @@
     [index]="i"
     (onClickSquare)="setSquare(i)"
   ></app-square>
-  <!-- <select name="difficulty" id="difficulty" class="difficulty" (change)="myFunc(difficulty.value)">
-    <option value="0" default>Difficulty</option>
-    <option value="easy" >Winnable</option>
-    <option value="hard">Unbeatable</option>
-  </select> -->
-
-
     <select #difficulty (change)="setGameDifficulty(difficulty.value)" class="difficulty" *ngIf="round === 0 || !gameState">
       <option default selected disabled>Dificulty</option>
-      <option>Winnable</option>
-      <option>Unbeatable</option>
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
     </select>
 
 

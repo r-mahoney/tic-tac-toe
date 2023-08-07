@@ -12,7 +12,7 @@ export class GameService {
   round: number = 0;
   gameState: boolean = true;
   winner: string = '';
-  difficulty: string = 'Winnable';
+  difficulty: string = 'Easy';
 
   constructor() {}
 
@@ -36,10 +36,19 @@ export class GameService {
 
   changePlayer() {
     let index;
+    let availableIndices = this.gameBoard.filter(
+      (space: any) => space !== 'X' && space !== 'O'
+    );
     if (this.activePlayer === this.Player) {
       this.activePlayer = this.Bot;
-      if (this.difficulty === 'Winnable') {
+      if (this.difficulty === 'Easy') {
         index = this.easyBotTurn(this.gameBoard);
+      } else if (this.difficulty === 'Medium') {
+        if (availableIndices.length === 2 || availableIndices.length === 8) {
+          index = this.easyBotTurn(this.gameBoard);
+        } else {
+          index = this.botTurn(this.gameBoard, this.Bot).index;
+        }
       } else {
         index = this.botTurn(this.gameBoard, this.Bot).index;
       }
@@ -71,10 +80,10 @@ export class GameService {
       if (this.gameBoard[index] !== 'X' && this.gameBoard[index] !== 'O') {
         this.gameBoard[index] = this.tiles[index] = this.activePlayer;
         this.round++;
+        if (this.checkGameEnd(this.gameBoard)) {
+          this.gameState = false;
+        }
         this.changePlayer();
-      }
-      if (this.checkGameEnd(this.gameBoard)) {
-        this.gameState = false;
       }
     }
   }
